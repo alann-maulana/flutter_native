@@ -1,26 +1,41 @@
 library flutter_native;
 
-import 'package:flutter/cupertino.dart' as cupertino;
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart' as material;
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'dart:async';
-import 'dart:io';
+import 'src/platform/platform.dart';
 
-part 'src/native_app.dart';
-part 'src/native_appbar.dart';
-part 'src/native_base.dart';
-part 'src/native_button.dart';
-part 'src/native_dialog.dart';
-part 'src/native_icon_button.dart';
-part 'src/native_list_tile.dart';
-part 'src/native_list_view.dart';
-part 'src/native_refresh_list_view.dart';
-part 'src/native_page_route.dart';
-part 'src/native_progress_indicator.dart';
-part 'src/native_scaffold.dart';
-part 'src/native_tab_scaffold.dart';
-part 'src/native_switch.dart';
-part 'src/native_textfield.dart';
-part 'src/native_widget.dart';
+export 'src/native_action_sheet.dart';
+export 'src/native_app.dart';
+export 'src/native_appbar.dart';
+export 'src/native_base.dart';
+export 'src/native_button.dart';
+export 'src/native_dialog.dart';
+export 'src/native_icon_button.dart';
+export 'src/native_list_tile.dart';
+export 'src/native_list_view.dart';
+export 'src/native_page_route.dart';
+export 'src/native_progress_indicator.dart';
+export 'src/native_refresh_list_view.dart';
+export 'src/native_scaffold.dart';
+export 'src/native_switch.dart';
+export 'src/native_tab_scaffold.dart';
+export 'src/native_textfield.dart';
+export 'src/native_widget.dart';
+
+Platform defaultTargetPlatform;
+
+PlatformWidget defaultTargetPlatformWidget;
+
+PlatformWidget get platformWidget {
+  if (defaultTargetPlatformWidget != null) {
+    return defaultTargetPlatformWidget;
+  }
+
+  final platform = defaultTargetPlatform ?? Platform();
+
+  if (platform.isIOS || platform.isMacOS) {
+    return PlatformWidget.cupertino;
+  }
+
+  return PlatformWidget.material;
+}
+
+enum PlatformWidget { material, cupertino }

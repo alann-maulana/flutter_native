@@ -1,44 +1,54 @@
-part of flutter_native;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class NativeProgressIndicator extends StatefulWidget {
-  final double radius;
-  final double androidValue;
-  final double androidStrokeWidth;
-  final Color androidBackgroundColor;
-  final Animation<Color> androidValueColor;
+import 'native_base.dart';
 
+class NativeProgressIndicator
+    extends BaseNativeStatelessWidget<CupertinoActivityIndicator, SizedBox> {
   NativeProgressIndicator({
-    this.radius = 10.0,
-    this.androidValue,
-    this.androidBackgroundColor,
-    this.androidValueColor,
-    this.androidStrokeWidth = 4.0,
-  });
+    Key key,
+    this.radius,
+    this.value,
+    this.backgroundColor,
+    this.valueColor,
+    this.strokeWidth,
+    this.semanticsLabel,
+    this.semanticsValue,
+    this.animating,
+  }) : super(key: key);
+
+  final double radius;
+  final double value;
+  final Color backgroundColor;
+  final Animation<Color> valueColor;
+  final double strokeWidth;
+  final String semanticsLabel;
+  final String semanticsValue;
+  final bool animating;
 
   @override
-  _NativeProgressIndicatorState createState() {
-    return _NativeProgressIndicatorState();
+  CupertinoActivityIndicator buildCupertino(BuildContext context) {
+    return CupertinoActivityIndicator(
+      radius: radius ?? 10.0,
+      animating: animating ?? true,
+    );
   }
-}
 
-class _NativeProgressIndicatorState extends State<NativeProgressIndicator> {
   @override
-  Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      return Container(
-        width: widget.radius * 2.5,
-        height: widget.radius * 2.5,
-        child: material.CircularProgressIndicator(
-          value: widget.androidValue,
-          backgroundColor: widget.androidBackgroundColor,
-          valueColor: widget.androidValueColor,
-          strokeWidth: widget.androidStrokeWidth,
-        ),
-      );
-    }
-
-    return cupertino.CupertinoActivityIndicator(
-      radius: widget.radius,
+  SizedBox buildMaterial(BuildContext context) {
+    return SizedBox(
+      width: (radius ?? 10.0) * 2,
+      height: (radius ?? 10.0) * 2,
+      child: CircularProgressIndicator(
+        key: key,
+        value: value,
+        backgroundColor: backgroundColor,
+        valueColor: valueColor,
+        strokeWidth: strokeWidth ?? 4.0,
+        semanticsLabel: semanticsLabel,
+        semanticsValue: semanticsValue,
+      ),
     );
   }
 }

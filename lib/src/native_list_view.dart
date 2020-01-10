@@ -1,19 +1,21 @@
-part of flutter_native;
+import 'package:flutter/widgets.dart';
 
-class NativeListView extends _NativeStatelessWidget<SliverList, ListView> {
+import 'native_base.dart';
+
+class NativeListView extends BaseNativeStatelessWidget<SliverList, ListView> {
   final List<Widget> children;
 
   NativeListView({@required this.children});
 
   @override
-  ListView buildAndroid(BuildContext context) {
+  ListView buildMaterial(BuildContext context) {
     return ListView(
       children: children,
     );
   }
 
   @override
-  SliverList buildIOS(BuildContext context) {
+  SliverList buildCupertino(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) => children[index],

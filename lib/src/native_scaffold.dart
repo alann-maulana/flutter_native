@@ -1,8 +1,16 @@
-part of flutter_native;
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart' as cupertino;
+import 'package:flutter/material.dart' as material;
+import 'package:flutter/widgets.dart';
+
+import 'native_appbar.dart';
+import 'native_base.dart';
 
 typedef RefreshCallback = Future<void> Function();
 
-class NativeScaffold extends StatefulWidget {
+class NativeScaffold extends BaseNativeStatelessWidget<
+    cupertino.CupertinoPageScaffold, material.Scaffold> {
   final NativeAppBar appBar;
   final Widget body;
   final material.FloatingActionButton androidFab;
@@ -16,51 +24,26 @@ class NativeScaffold extends StatefulWidget {
   });
 
   @override
-  _NativeScaffoldState createState() {
-    return _NativeScaffoldState();
-  }
-}
-
-class _NativeScaffoldState extends State<NativeScaffold> {
-  @override
-  Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      if (widget.onRefresh == null) {
-        return material.Scaffold(
-          appBar: widget.appBar,
-          body: widget.body,
-          floatingActionButton: widget.androidFab,
-        );
-      }
-
-      return material.Scaffold(
-        appBar: widget.appBar,
-        body: material.RefreshIndicator(
-          onRefresh: widget.onRefresh,
-          child: widget.body,
-        ),
-        floatingActionButton: widget.androidFab,
-      );
-    }
-
+  cupertino.CupertinoPageScaffold buildCupertino(
+      cupertino.BuildContext context) {
     final slivers = <Widget>[];
 
     cupertino.ObstructingPreferredSizeWidget navigationBar;
-    if (widget.appBar.iosLargeTitle) {
-      slivers.add(widget.appBar);
+    if (appBar.iosLargeTitle) {
+      slivers.add(appBar);
     } else {
-      navigationBar = widget.appBar._iosBar;
+      navigationBar = appBar.cupertinoNavigationBar;
     }
 
-    if (widget.onRefresh != null) {
+    if (onRefresh != null) {
       slivers.add(cupertino.CupertinoSliverRefreshControl(
-        onRefresh: widget.onRefresh,
+        onRefresh: onRefresh,
       ));
     }
 
     slivers.add(SliverSafeArea(
-      top: !widget.appBar.iosLargeTitle,
-      sliver: widget.body,
+      top: !appBar.iosLargeTitle,
+      sliver: body,
     ));
 
     final decoratedBox = DecoratedBox(
@@ -73,6 +56,26 @@ class _NativeScaffoldState extends State<NativeScaffold> {
     return cupertino.CupertinoPageScaffold(
       navigationBar: navigationBar,
       child: decoratedBox,
+    );
+  }
+
+  @override
+  material.Scaffold buildMaterial(cupertino.BuildContext context) {
+    if (onRefresh == null) {
+      return material.Scaffold(
+        appBar: appBar,
+        body: body,
+        floatingActionButton: androidFab,
+      );
+    }
+
+    return material.Scaffold(
+      appBar: appBar,
+      body: material.RefreshIndicator(
+        onRefresh: onRefresh,
+        child: body,
+      ),
+      floatingActionButton: androidFab,
     );
   }
 }

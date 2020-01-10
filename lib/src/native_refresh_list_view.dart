@@ -1,7 +1,13 @@
-part of flutter_native;
+import 'dart:async';
 
-class NativeRefreshListView
-    extends _NativeStatelessWidget<CustomScrollView, material.RefreshIndicator> {
+import 'package:flutter/cupertino.dart' as cupertino;
+import 'package:flutter/material.dart' as material;
+import 'package:flutter/widgets.dart';
+
+import 'native_base.dart';
+
+class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
+    material.RefreshIndicator> {
   final List<Widget> children;
   final Future<void> Function() onRefresh;
 
@@ -11,7 +17,7 @@ class NativeRefreshListView
   });
 
   @override
-  material.RefreshIndicator buildAndroid(BuildContext context) {
+  material.RefreshIndicator buildMaterial(BuildContext context) {
     return material.RefreshIndicator(
       onRefresh: onRefresh,
       child: ListView(
@@ -21,7 +27,7 @@ class NativeRefreshListView
   }
 
   @override
-  CustomScrollView buildIOS(BuildContext context) {
+  CustomScrollView buildCupertino(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         cupertino.CupertinoSliverRefreshControl(
