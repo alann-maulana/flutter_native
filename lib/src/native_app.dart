@@ -93,8 +93,6 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
       checkerboardOffscreenLayers: checkerboardOffscreenLayers ?? false,
       showSemanticsDebugger: showSemanticsDebugger ?? false,
       debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? true,
-      shortcuts: shortcuts,
-      actions: actions,
     );
   }
 
@@ -127,8 +125,6 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
       checkerboardOffscreenLayers: checkerboardOffscreenLayers ?? false,
       showSemanticsDebugger: showSemanticsDebugger ?? false,
       debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? true,
-      shortcuts: shortcuts,
-      actions: actions,
     );
   }
 }

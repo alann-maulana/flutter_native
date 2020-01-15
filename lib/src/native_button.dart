@@ -28,7 +28,6 @@ class NativeButton
     this.highlightElevation,
     this.disabledElevation,
     this.padding,
-    this.visualDensity,
     this.shape,
     this.clipBehavior,
     this.focusNode,
@@ -61,7 +60,6 @@ class NativeButton
   final double highlightElevation;
   final double disabledElevation;
   final EdgeInsetsGeometry padding;
-  final VisualDensity visualDensity;
   final ShapeBorder shape;
   final Clip clipBehavior;
   final FocusNode focusNode;
@@ -126,7 +124,6 @@ class NativeButton
             highlightElevation: highlightElevation,
             disabledElevation: disabledElevation,
             padding: padding,
-            visualDensity: visualDensity,
             shape: shape,
             clipBehavior: clipBehavior ?? Clip.none,
             focusNode: focusNode,
@@ -150,7 +147,6 @@ class NativeButton
             splashColor: splashColor,
             colorBrightness: colorBrightness,
             padding: padding,
-            visualDensity: visualDensity,
             shape: shape,
             clipBehavior: clipBehavior ?? Clip.none,
             focusNode: focusNode,

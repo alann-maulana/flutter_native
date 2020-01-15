@@ -46,7 +46,6 @@ class NativeSwitch extends BaseNativeStatelessWidget<CupertinoSwitch, Switch> {
       value: value,
       onChanged: onChanged,
       activeColor: activeColor,
-      trackColor: activeTrackColor,
       dragStartBehavior: dragStartBehavior ?? DragStartBehavior.start,
     );
   }

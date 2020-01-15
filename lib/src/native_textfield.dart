@@ -27,8 +27,6 @@ class NativeTextField extends BaseNativeStatelessWidget<
     this.autofocus = false,
     this.obscureText = false,
     this.autocorrect = true,
-    this.smartDashesType,
-    this.smartQuotesType,
     this.enableSuggestions = true,
     this.maxLines = 1,
     this.minLines,
@@ -76,8 +74,6 @@ class NativeTextField extends BaseNativeStatelessWidget<
   final bool autofocus;
   final bool obscureText;
   final bool autocorrect;
-  final SmartDashesType smartDashesType;
-  final SmartQuotesType smartQuotesType;
   final bool enableSuggestions;
   final int maxLines;
   final int minLines;
@@ -135,8 +131,6 @@ class NativeTextField extends BaseNativeStatelessWidget<
       autofocus: autofocus,
       obscureText: obscureText,
       autocorrect: autocorrect,
-      smartDashesType: smartDashesType,
-      smartQuotesType: smartQuotesType,
       enableSuggestions: enableSuggestions,
       maxLines: maxLines,
       minLines: minLines,

@@ -17,7 +17,6 @@ class NativeIconButton
     this.splashColor,
     this.disabledColor,
     this.iconSize,
-    this.visualDensity,
     this.padding,
     this.alignment,
     this.focusNode,
@@ -37,7 +36,6 @@ class NativeIconButton
   final Color splashColor;
   final Color disabledColor;
   final double iconSize;
-  final VisualDensity visualDensity;
   final EdgeInsetsGeometry padding;
   final Alignment alignment;
   final FocusNode focusNode;
@@ -70,7 +68,6 @@ class NativeIconButton
     return IconButton(
       key: key,
       iconSize: iconSize ?? 24.0,
-      visualDensity: visualDensity,
       padding: padding ?? const EdgeInsets.all(8.0),
       alignment: Alignment.center,
       icon: icon,
