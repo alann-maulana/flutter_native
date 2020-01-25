@@ -12,12 +12,14 @@ export 'src/native_icon_button.dart';
 export 'src/native_list_tile.dart';
 export 'src/native_list_view.dart';
 export 'src/native_page_route.dart';
+export 'src/native_picker.dart';
 export 'src/native_progress_indicator.dart';
 export 'src/native_refresh_list_view.dart';
 export 'src/native_scaffold.dart';
 export 'src/native_switch.dart';
 export 'src/native_tab_scaffold.dart';
 export 'src/native_textfield.dart';
+export 'src/native_value.dart';
 export 'src/native_widget.dart';
 
 Platform defaultTargetPlatform;
