@@ -13,7 +13,7 @@ class NativeValue<T> {
         _cupertinoValue = cupertino;
 
   T get value {
-    if (defaultTargetPlatformWidget == PlatformWidget.cupertino) {
+    if (platformWidget == PlatformWidget.cupertino) {
       return _cupertinoValue;
     }
 
