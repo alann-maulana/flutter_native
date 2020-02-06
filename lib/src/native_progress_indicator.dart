@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'native_base.dart';
 
 class NativeProgressIndicator
-    extends BaseNativeStatelessWidget<CupertinoActivityIndicator, SizedBox> {
+    extends BaseNativeStatelessWidget<Widget, SizedBox> {
   NativeProgressIndicator({
     Key key,
     this.radius,
@@ -16,6 +16,7 @@ class NativeProgressIndicator
     this.semanticsLabel,
     this.semanticsValue,
     this.animating,
+    this.brightness,
   }) : super(key: key);
 
   final double radius;
@@ -26,13 +27,20 @@ class NativeProgressIndicator
   final String semanticsLabel;
   final String semanticsValue;
   final bool animating;
+  final Brightness brightness;
 
   @override
-  CupertinoActivityIndicator buildCupertino(BuildContext context) {
-    return CupertinoActivityIndicator(
-      radius: radius ?? 10.0,
-      animating: animating ?? true,
-    );
+  Widget buildCupertino(BuildContext context) {
+    return CupertinoTheme(
+        data: brightness == null
+            ? CupertinoTheme.of(context)
+            : CupertinoThemeData(
+                brightness: brightness,
+              ),
+        child: CupertinoActivityIndicator(
+          radius: radius ?? 10.0,
+          animating: animating ?? true,
+        ));
   }
 
   @override

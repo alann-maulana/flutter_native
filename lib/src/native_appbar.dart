@@ -13,6 +13,7 @@ class NativeAppBar
   final bool iosLargeTitle;
   final List<Widget> androidActions;
   final String iosPreviousPageTitle;
+  final EdgeInsetsDirectional padding;
 
   NativeAppBar({
     this.title,
@@ -21,6 +22,7 @@ class NativeAppBar
     this.iosLargeTitle = false,
     this.androidActions,
     this.iosPreviousPageTitle = 'Back',
+    this.padding,
   })  : assert(title != null),
         preferredSize = Size.fromHeight(56.0),
         cupertinoNavigationBar = iosLargeTitle == null
@@ -50,6 +52,7 @@ class NativeAppBar
         largeTitle: title,
         leading: leading,
         trailing: iosTrailing,
+        padding: padding,
         previousPageTitle: iosPreviousPageTitle,
       );
     }

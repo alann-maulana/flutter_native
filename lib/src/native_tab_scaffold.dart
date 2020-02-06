@@ -10,12 +10,18 @@ class NativeTabScaffold extends BaseNativeStatelessWidget<
   final int currentIndex;
   final ValueChanged<int> onTap;
   final List<WidgetBuilder> builders;
+  final cupertino.CupertinoTabController cupertinoController;
+  final material.PageController materialController;
+  final Color backgroundColor;
 
   NativeTabScaffold({
     @required this.items,
+    @required this.builders,
     this.currentIndex = 0,
     this.onTap,
-    @required this.builders,
+    this.cupertinoController,
+    this.materialController,
+    this.backgroundColor,
   });
 
   @override
@@ -24,6 +30,8 @@ class NativeTabScaffold extends BaseNativeStatelessWidget<
     return cupertino.CupertinoTabScaffold(
       tabBar: cupertino.CupertinoTabBar(items: items),
       tabBuilder: (context, index) => builders[index](context),
+      controller: cupertinoController,
+      backgroundColor: backgroundColor,
     );
   }
 
@@ -38,8 +46,13 @@ class NativeTabScaffold extends BaseNativeStatelessWidget<
         type: material.BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         onTap: onTap,
+        backgroundColor: backgroundColor,
       ),
-      body: builders[currentIndex](context),
+      body: PageView(
+        children: builders.map((e) => e(context)).toList(),
+        controller: materialController,
+        physics: NeverScrollableScrollPhysics(),
+      ),
     );
   }
 }

@@ -29,10 +29,12 @@ class NativeScaffold extends BaseNativeStatelessWidget<
     final slivers = <Widget>[];
 
     cupertino.ObstructingPreferredSizeWidget navigationBar;
-    if (appBar.iosLargeTitle) {
-      slivers.add(appBar);
-    } else {
-      navigationBar = appBar.cupertinoNavigationBar;
+    if (appBar != null) {
+      if (appBar.iosLargeTitle) {
+        slivers.add(appBar);
+      } else {
+        navigationBar = appBar.cupertinoNavigationBar;
+      }
     }
 
     if (onRefresh != null) {
@@ -42,7 +44,7 @@ class NativeScaffold extends BaseNativeStatelessWidget<
     }
 
     slivers.add(SliverSafeArea(
-      top: !appBar.iosLargeTitle,
+      top: !(appBar?.iosLargeTitle ?? true),
       sliver: body,
     ));
 
