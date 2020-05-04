@@ -35,7 +35,6 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
     this.shortcuts,
-    this.actions,
   }) : super(key: key);
 
   final GlobalKey<NavigatorState> navigatorKey;
@@ -65,7 +64,6 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
   final bool showSemanticsDebugger;
   final bool debugShowCheckedModeBanner;
   final Map<LogicalKeySet, Intent> shortcuts;
-  final Map<LocalKey, ActionFactory> actions;
 
   @override
   cupertino.CupertinoApp buildCupertino(cupertino.BuildContext context) {
