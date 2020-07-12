@@ -10,10 +10,12 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
     material.RefreshIndicator> {
   final List<Widget> children;
   final Future<void> Function() onRefresh;
+  final SliverSafeArea safeArea;
 
   NativeRefreshListView({
     @required this.children,
     @required this.onRefresh,
+    this.safeArea,
   });
 
   @override
@@ -34,6 +36,11 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
           onRefresh: onRefresh,
         ),
         SliverSafeArea(
+          top: safeArea?.top ?? true,
+          bottom: safeArea?.bottom ?? true,
+          left: safeArea?.left ?? true,
+          right: safeArea?.right ?? true,
+          minimum: safeArea?.minimum ?? EdgeInsets.zero,
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) => children[index],
