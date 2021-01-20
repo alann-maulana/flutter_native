@@ -11,11 +11,13 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
   final List<Widget> children;
   final Future<void> Function() onRefresh;
   final SliverSafeArea safeArea;
+  final bool reverse;
 
   NativeRefreshListView({
     @required this.children,
     @required this.onRefresh,
     this.safeArea,
+    this.reverse = false,
   });
 
   @override
@@ -23,6 +25,7 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
     return material.RefreshIndicator(
       onRefresh: onRefresh,
       child: ListView(
+        reverse: reverse,
         children: children,
       ),
     );
@@ -31,6 +34,7 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
   @override
   CustomScrollView buildCupertino(BuildContext context) {
     return CustomScrollView(
+      reverse: reverse,
       slivers: <Widget>[
         cupertino.CupertinoSliverRefreshControl(
           onRefresh: onRefresh,
