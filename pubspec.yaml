@@ -5,7 +5,7 @@ author: Eyro Labs <maulana@cubeacon.com>
 homepage: https://github.com/eyro-labs/flutter_native
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
   flutter:
