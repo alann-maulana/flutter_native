@@ -32,7 +32,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
     this.minLines,
     this.expands = false,
     this.maxLength,
-    this.maxLengthEnforced = true,
+    this.maxLengthEnforcement,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
@@ -82,7 +82,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
   final ToolbarOptions toolbarOptions;
   final bool showCursor;
   final int maxLength;
-  final bool maxLengthEnforced;
+  final MaxLengthEnforcement maxLengthEnforcement;
   final ValueChanged<String> onChanged;
   final VoidCallback onEditingComplete;
   final ValueChanged<String> onSubmitted;
@@ -136,7 +136,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
       minLines: minLines,
       expands: expands,
       maxLength: maxLength,
-      maxLengthEnforced: maxLengthEnforced,
+      maxLengthEnforcement: maxLengthEnforcement,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
@@ -186,7 +186,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
       minLines: minLines,
       expands: expands,
       maxLength: maxLength,
-      maxLengthEnforced: maxLengthEnforced,
+      maxLengthEnforcement: maxLengthEnforcement,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,

@@ -180,7 +180,9 @@ class TimeRange {
     final String start = splits.first;
     var hourMinute = start.contains('.')
         ? start.split('.')
-        : start.contains(':') ? start.split(':') : <String>[];
+        : start.contains(':')
+            ? start.split(':')
+            : <String>[];
     if (hourMinute.length == 2) {
       this.start = TimeOfDay(
         hour: int.tryParse(hourMinute.first) ?? 0,
@@ -191,7 +193,9 @@ class TimeRange {
     final String end = splits[1];
     hourMinute = end.contains('.')
         ? end.split('.')
-        : end.contains(':') ? end.split(':') : [];
+        : end.contains(':')
+            ? end.split(':')
+            : [];
     if (hourMinute.length == 2) {
       this.end = TimeOfDay(
         hour: int.tryParse(hourMinute.first) ?? 0,

@@ -33,7 +33,7 @@ class NativeActionSheet {
           vertical: 8,
         ),
         child: DefaultTextStyle(
-          style: material.Theme.of(context).textTheme.title,
+          style: material.Theme.of(context).textTheme.headline6,
           child: title,
         ),
       )
@@ -85,8 +85,11 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
                     leading.icon,
                     size: leading.size,
                     color: isDestructiveAction
-                        ? cupertino.CupertinoColors.destructiveRed
-                        : cupertino.CupertinoColors.activeBlue,
+                        ? cupertino.CupertinoDynamicColor.resolve(
+                            cupertino.CupertinoColors.systemRed,
+                            context,
+                          )
+                        : cupertino.CupertinoTheme.of(context).primaryColor,
                   ),
             leading == null ? SizedBox.shrink() : SizedBox(width: 8),
             child,

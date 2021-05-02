@@ -69,8 +69,10 @@ class PopupUtils {
         ),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.title,
-          textAlign: defaultTargetPlatformWidget == PlatformWidget.cupertino ? TextAlign.center : null,
+          style: Theme.of(context).textTheme.headline6,
+          textAlign: defaultTargetPlatformWidget == PlatformWidget.cupertino
+              ? TextAlign.center
+              : null,
         ),
       ),
       Divider(),

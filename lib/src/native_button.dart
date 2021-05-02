@@ -102,6 +102,7 @@ class NativeButton
   @override
   MaterialButton buildMaterial(BuildContext context) {
     return filled == true
+        // ignore: deprecated_member_use
         ? RaisedButton(
             key: key,
             child: child,
@@ -131,6 +132,7 @@ class NativeButton
             materialTapTargetSize: materialTapTargetSize,
             animationDuration: animationDuration,
           )
+        // ignore: deprecated_member_use
         : FlatButton(
             key: key,
             onPressed: onPressed,

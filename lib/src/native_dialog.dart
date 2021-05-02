@@ -39,7 +39,7 @@ class NativeDialog {
 }
 
 class NativeDialogAction extends BaseNativeStatelessWidget<
-    cupertino.CupertinoDialogAction, material.FlatButton> {
+    cupertino.CupertinoDialogAction, material.TextButton> {
   final Icon leading;
   final Widget child;
   final VoidCallback onPressed;
@@ -66,8 +66,8 @@ class NativeDialogAction extends BaseNativeStatelessWidget<
   }
 
   @override
-  material.FlatButton buildMaterial(cupertino.BuildContext context) {
-    return material.FlatButton(
+  material.TextButton buildMaterial(cupertino.BuildContext context) {
+    return material.TextButton(
       child: child,
       onPressed: onPressed,
     );
