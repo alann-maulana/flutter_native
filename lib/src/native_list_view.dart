@@ -4,12 +4,17 @@ import 'native_base.dart';
 
 class NativeListView extends BaseNativeStatelessWidget<SliverList, ListView> {
   final List<Widget> children;
+  final bool reverse;
 
-  NativeListView({@required this.children});
+  NativeListView({
+    @required this.children,
+    this.reverse = false,
+  });
 
   @override
   ListView buildMaterial(BuildContext context) {
     return ListView(
+      reverse: reverse,
       children: children,
     );
   }
