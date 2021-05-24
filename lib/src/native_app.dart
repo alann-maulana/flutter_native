@@ -7,7 +7,7 @@ import 'native_base.dart';
 class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
     material.MaterialApp> {
   NativeApp({
-    Key key,
+    Key? key,
     this.navigatorKey,
     this.home,
     this.routes,
@@ -16,7 +16,7 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
     this.onUnknownRoute,
     this.navigatorObservers,
     this.builder,
-    this.title,
+    this.title = '',
     this.onGenerateTitle,
     this.color,
     this.materialTheme,
@@ -37,33 +37,33 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
     this.shortcuts,
   }) : super(key: key);
 
-  final GlobalKey<NavigatorState> navigatorKey;
-  final Widget home;
-  final Map<String, WidgetBuilder> routes;
-  final String initialRoute;
-  final RouteFactory onGenerateRoute;
-  final RouteFactory onUnknownRoute;
-  final List<NavigatorObserver> navigatorObservers;
-  final material.TransitionBuilder builder;
+  final GlobalKey<NavigatorState>? navigatorKey;
+  final Widget? home;
+  final Map<String, WidgetBuilder>? routes;
+  final String? initialRoute;
+  final RouteFactory? onGenerateRoute;
+  final RouteFactory? onUnknownRoute;
+  final List<NavigatorObserver>? navigatorObservers;
+  final material.TransitionBuilder? builder;
   final String title;
-  final GenerateAppTitle onGenerateTitle;
-  final Color color;
-  final material.ThemeData materialTheme;
-  final material.ThemeData materialDarkTheme;
-  final cupertino.CupertinoThemeData cupertinoTheme;
-  final material.ThemeMode themeMode;
-  final Locale locale;
-  final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
-  final LocaleListResolutionCallback localeListResolutionCallback;
-  final LocaleResolutionCallback localeResolutionCallback;
-  final List<Locale> supportedLocales;
-  final bool debugShowMaterialGrid;
-  final bool showPerformanceOverlay;
-  final bool checkerboardRasterCacheImages;
-  final bool checkerboardOffscreenLayers;
-  final bool showSemanticsDebugger;
-  final bool debugShowCheckedModeBanner;
-  final Map<LogicalKeySet, Intent> shortcuts;
+  final GenerateAppTitle? onGenerateTitle;
+  final Color? color;
+  final material.ThemeData? materialTheme;
+  final material.ThemeData? materialDarkTheme;
+  final cupertino.CupertinoThemeData? cupertinoTheme;
+  final material.ThemeMode? themeMode;
+  final Locale? locale;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final LocaleListResolutionCallback? localeListResolutionCallback;
+  final LocaleResolutionCallback? localeResolutionCallback;
+  final List<Locale>? supportedLocales;
+  final bool? debugShowMaterialGrid;
+  final bool? showPerformanceOverlay;
+  final bool? checkerboardRasterCacheImages;
+  final bool? checkerboardOffscreenLayers;
+  final bool? showSemanticsDebugger;
+  final bool? debugShowCheckedModeBanner;
+  final Map<LogicalKeySet, Intent>? shortcuts;
 
   @override
   cupertino.CupertinoApp buildCupertino(cupertino.BuildContext context) {
@@ -123,6 +123,7 @@ class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
       checkerboardOffscreenLayers: checkerboardOffscreenLayers ?? false,
       showSemanticsDebugger: showSemanticsDebugger ?? false,
       debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? true,
+      shortcuts: shortcuts,
     );
   }
 }

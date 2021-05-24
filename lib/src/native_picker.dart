@@ -5,11 +5,11 @@ import '../flutter_native.dart';
 import 'popup_utils.dart';
 
 class NativePicker {
-  static Future<DateTime> pickerDate({
-    @required BuildContext context,
-    @required DateTime initialDate,
-    @required DateTime firstDate,
-    @required DateTime lastDate,
+  static Future<DateTime?> pickerDate({
+    required BuildContext context,
+    required DateTime initialDate,
+    required DateTime firstDate,
+    required DateTime lastDate,
     String title = 'Select Date',
   }) async {
     if (platformWidget == PlatformWidget.cupertino) {
@@ -51,10 +51,10 @@ class NativePicker {
     );
   }
 
-  static Future<TimeOfDay> pickerTime({
+  static Future<TimeOfDay?> pickerTime({
     String title = 'Select Time',
-    @required BuildContext context,
-    @required TimeOfDay initialTime,
+    required BuildContext context,
+    required TimeOfDay initialTime,
     int minuteInterval = 15,
   }) async {
     if (platformWidget == PlatformWidget.cupertino) {
@@ -85,17 +85,17 @@ class NativePicker {
     return showTimePicker(
       context: context,
       initialTime: initialTime,
-      builder: (BuildContext context, Widget child) => MediaQuery(
+      builder: (BuildContext context, Widget? child) => MediaQuery(
         data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
-        child: child,
+        child: child!,
       ),
     );
   }
 
   static Future<TimeRange> pickerTimeRange({
     String title = 'Select Time Range',
-    @required BuildContext context,
-    @required TimeRange initialRange,
+    required BuildContext context,
+    required TimeRange initialRange,
     int minuteInterval = 15,
   }) async {
     final now = DateTime.now();
@@ -169,7 +169,7 @@ class NativePicker {
 }
 
 class TimeRange {
-  TimeRange({@required this.start, @required this.end});
+  TimeRange({required this.start, required this.end});
 
   TimeRange.fromString(String range) {
     final splits = range.split('-');
@@ -204,8 +204,8 @@ class TimeRange {
     }
   }
 
-  TimeOfDay start;
-  TimeOfDay end;
+  late TimeOfDay start;
+  late TimeOfDay end;
 
   String _addLeadingZeroIfNeeded(int value) {
     if (value < 10) {

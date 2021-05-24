@@ -22,13 +22,13 @@ export 'src/native_textfield.dart';
 export 'src/native_value.dart';
 export 'src/native_widget.dart';
 
-Platform defaultTargetPlatform;
+Platform? defaultTargetPlatform;
 
-PlatformWidget defaultTargetPlatformWidget;
+PlatformWidget? defaultTargetPlatformWidget;
 
 PlatformWidget get platformWidget {
   if (defaultTargetPlatformWidget != null) {
-    return defaultTargetPlatformWidget;
+    return defaultTargetPlatformWidget!;
   }
 
   final platform = defaultTargetPlatform ?? Platform();

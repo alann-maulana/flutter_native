@@ -11,14 +11,14 @@ typedef RefreshCallback = Future<void> Function();
 
 class NativeScaffold extends BaseNativeStatelessWidget<
     cupertino.CupertinoPageScaffold, material.Scaffold> {
-  final NativeAppBar appBar;
+  final NativeAppBar? appBar;
   final Widget body;
-  final material.FloatingActionButton androidFab;
-  final RefreshCallback onRefresh;
+  final material.FloatingActionButton? androidFab;
+  final RefreshCallback? onRefresh;
 
   const NativeScaffold({
     this.appBar,
-    this.body,
+    required this.body,
     this.androidFab,
     this.onRefresh,
   });
@@ -28,12 +28,12 @@ class NativeScaffold extends BaseNativeStatelessWidget<
       cupertino.BuildContext context) {
     final slivers = <Widget>[];
 
-    cupertino.ObstructingPreferredSizeWidget navigationBar;
+    cupertino.ObstructingPreferredSizeWidget? navigationBar;
     if (appBar != null) {
-      if (appBar.iosLargeTitle) {
-        slivers.add(appBar);
+      if (appBar!.iosLargeTitle) {
+        slivers.add(appBar!);
       } else {
-        navigationBar = appBar.cupertinoNavigationBar;
+        navigationBar = appBar!.cupertinoNavigationBar;
       }
     }
 
@@ -74,7 +74,7 @@ class NativeScaffold extends BaseNativeStatelessWidget<
     return material.Scaffold(
       appBar: appBar,
       body: material.RefreshIndicator(
-        onRefresh: onRefresh,
+        onRefresh: onRefresh!,
         child: body,
       ),
       floatingActionButton: androidFab,

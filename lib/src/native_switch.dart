@@ -7,9 +7,9 @@ import 'native_base.dart';
 
 class NativeSwitch extends BaseNativeStatelessWidget<CupertinoSwitch, Switch> {
   NativeSwitch({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    Key? key,
+    required this.value,
+    required this.onChanged,
     this.activeColor,
     this.activeTrackColor,
     this.inactiveThumbColor,
@@ -26,18 +26,18 @@ class NativeSwitch extends BaseNativeStatelessWidget<CupertinoSwitch, Switch> {
 
   final bool value;
   final ValueChanged<bool> onChanged;
-  final Color activeColor;
-  final Color activeTrackColor;
-  final Color inactiveThumbColor;
-  final Color inactiveTrackColor;
-  final ImageProvider activeThumbImage;
-  final ImageProvider inactiveThumbImage;
-  final MaterialTapTargetSize materialTapTargetSize;
-  final DragStartBehavior dragStartBehavior;
-  final Color focusColor;
-  final Color hoverColor;
-  final FocusNode focusNode;
-  final bool autoFocus;
+  final Color? activeColor;
+  final Color? activeTrackColor;
+  final Color? inactiveThumbColor;
+  final Color? inactiveTrackColor;
+  final ImageProvider? activeThumbImage;
+  final ImageProvider? inactiveThumbImage;
+  final MaterialTapTargetSize? materialTapTargetSize;
+  final DragStartBehavior? dragStartBehavior;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final FocusNode? focusNode;
+  final bool? autoFocus;
 
   @override
   CupertinoSwitch buildCupertino(BuildContext context) {

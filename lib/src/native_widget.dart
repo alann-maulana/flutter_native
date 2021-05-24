@@ -7,12 +7,10 @@ class NativeStatelessWidget extends BaseNativeStatelessWidget<Widget, Widget> {
   final NativeBuilder<Widget> cupertino;
 
   const NativeStatelessWidget({
-    Key key,
-    @required this.material,
-    @required this.cupertino,
-  })  : assert(material != null),
-        assert(cupertino != null),
-        super(key: key);
+    Key? key,
+    required this.material,
+    required this.cupertino,
+  })  : super(key: key);
 
   @override
   Widget buildMaterial(BuildContext context) {

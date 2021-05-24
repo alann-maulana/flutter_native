@@ -7,7 +7,7 @@ import 'native_base.dart';
 class NativeProgressIndicator
     extends BaseNativeStatelessWidget<Widget, SizedBox> {
   NativeProgressIndicator({
-    Key key,
+    Key? key,
     this.radius,
     this.value,
     this.backgroundColor,
@@ -19,15 +19,15 @@ class NativeProgressIndicator
     this.brightness,
   }) : super(key: key);
 
-  final double radius;
-  final double value;
-  final Color backgroundColor;
-  final Animation<Color> valueColor;
-  final double strokeWidth;
-  final String semanticsLabel;
-  final String semanticsValue;
-  final bool animating;
-  final Brightness brightness;
+  final double? radius;
+  final double? value;
+  final Color? backgroundColor;
+  final Animation<Color>? valueColor;
+  final double? strokeWidth;
+  final String? semanticsLabel;
+  final String? semanticsValue;
+  final bool? animating;
+  final Brightness? brightness;
 
   @override
   Widget buildCupertino(BuildContext context) {

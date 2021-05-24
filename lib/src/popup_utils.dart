@@ -27,11 +27,11 @@ class PopupUtils {
     );
   }
 
-  static Future<T> showRoundedBottomSheetList<T>({
-    @required BuildContext context,
-    @required String title,
-    @required List<ListTile> items,
-    ListTile cancel,
+  static Future<T?> showRoundedBottomSheetList<T>({
+    required BuildContext context,
+    required String title,
+    required List<ListTile> items,
+    ListTile? cancel,
   }) async {
     return showRoundedBottomSheet<T>(
       context: (context),
@@ -45,12 +45,12 @@ class PopupUtils {
     );
   }
 
-  static Future<T> showRoundedBottomSheet<T>({
-    @required BuildContext context,
-    @required String title,
-    @required Widget body,
-    bool isScrollControlled,
-    Widget dismiss,
+  static Future<T?> showRoundedBottomSheet<T>({
+    required BuildContext context,
+    required String title,
+    required Widget body,
+    bool? isScrollControlled,
+    Widget? dismiss,
   }) async {
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -108,7 +108,7 @@ class PopupUtils {
         color: Colors.white,
         child: SafeArea(
           child:
-              isScrollControlled ? SingleChildScrollView(child: child) : child,
+              isScrollControlled! ? SingleChildScrollView(child: child) : child,
         ),
       ),
     );

@@ -7,7 +7,7 @@ class NativeListView extends BaseNativeStatelessWidget<SliverList, ListView> {
   final bool reverse;
 
   NativeListView({
-    @required this.children,
+    required this.children,
     this.reverse = false,
   });
 

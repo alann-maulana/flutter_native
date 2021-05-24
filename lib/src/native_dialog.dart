@@ -8,12 +8,12 @@ import '../flutter_native.dart';
 import 'native_base.dart';
 
 class NativeDialog {
-  static Future<T> showDialog<T>({
-    @required BuildContext context,
+  static Future<T?> showDialog<T>({
+    required BuildContext context,
     bool barrierDismissible = true,
-    @required Widget title,
-    @required Widget content,
-    @required List<NativeDialogAction> actions,
+    required Widget title,
+    required Widget content,
+    required List<NativeDialogAction> actions,
   }) {
     if (platformWidget == PlatformWidget.cupertino) {
       return cupertino.showCupertinoDialog<T>(
@@ -40,15 +40,15 @@ class NativeDialog {
 
 class NativeDialogAction extends BaseNativeStatelessWidget<
     cupertino.CupertinoDialogAction, material.TextButton> {
-  final Icon leading;
+  final Icon? leading;
   final Widget child;
   final VoidCallback onPressed;
   final bool isDefaultAction;
   final bool isDestructiveAction;
 
   NativeDialogAction({
-    @required this.child,
-    @required this.onPressed,
+    required this.child,
+    required this.onPressed,
     this.leading,
     this.isDefaultAction = false,
     this.isDestructiveAction = false,

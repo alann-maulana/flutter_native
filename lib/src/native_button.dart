@@ -7,9 +7,9 @@ import 'native_base.dart';
 class NativeButton
     extends BaseNativeStatelessWidget<CupertinoButton, MaterialButton> {
   NativeButton({
-    Key key,
-    @required this.child,
-    @required this.onPressed,
+    Key? key,
+    required this.child,
+    required this.onPressed,
     this.onLongPress,
     this.onHighlightChanged,
     this.textTheme,
@@ -42,33 +42,33 @@ class NativeButton
 
   final Widget child;
   final VoidCallback onPressed;
-  final VoidCallback onLongPress;
-  final ValueChanged<bool> onHighlightChanged;
-  final ButtonTextTheme textTheme;
-  final Color textColor;
-  final Color disabledTextColor;
-  final Color color;
-  final Color disabledColor;
-  final Color focusColor;
-  final Color hoverColor;
-  final Color highlightColor;
-  final Color splashColor;
-  final Brightness colorBrightness;
-  final double elevation;
-  final double focusElevation;
-  final double hoverElevation;
-  final double highlightElevation;
-  final double disabledElevation;
-  final EdgeInsetsGeometry padding;
-  final ShapeBorder shape;
-  final Clip clipBehavior;
-  final FocusNode focusNode;
-  final bool autoFocus;
-  final MaterialTapTargetSize materialTapTargetSize;
-  final Duration animationDuration;
-  final double minSize;
-  final double pressedOpacity;
-  final BorderRadius borderRadius;
+  final VoidCallback? onLongPress;
+  final ValueChanged<bool>? onHighlightChanged;
+  final ButtonTextTheme? textTheme;
+  final Color? textColor;
+  final Color? disabledTextColor;
+  final Color? color;
+  final Color? disabledColor;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final Color? highlightColor;
+  final Color? splashColor;
+  final Brightness? colorBrightness;
+  final double? elevation;
+  final double? focusElevation;
+  final double? hoverElevation;
+  final double? highlightElevation;
+  final double? disabledElevation;
+  final EdgeInsetsGeometry? padding;
+  final ShapeBorder? shape;
+  final Clip? clipBehavior;
+  final FocusNode? focusNode;
+  final bool? autoFocus;
+  final MaterialTapTargetSize? materialTapTargetSize;
+  final Duration? animationDuration;
+  final double? minSize;
+  final double? pressedOpacity;
+  final BorderRadius? borderRadius;
   final bool filled;
 
   @override

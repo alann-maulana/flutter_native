@@ -10,12 +10,12 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
     material.RefreshIndicator> {
   final List<Widget> children;
   final Future<void> Function() onRefresh;
-  final SliverSafeArea safeArea;
+  final SliverSafeArea? safeArea;
   final bool reverse;
 
   NativeRefreshListView({
-    @required this.children,
-    @required this.onRefresh,
+    required this.children,
+    required this.onRefresh,
     this.safeArea,
     this.reverse = false,
   });

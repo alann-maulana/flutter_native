@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart' as cupertino;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
@@ -9,7 +10,7 @@ import 'native_base.dart';
 class NativeTextField extends BaseNativeStatelessWidget<
     cupertino.CupertinoTextField, material.TextField> {
   NativeTextField({
-    Key key,
+    Key? key,
     this.controller,
     this.focusNode,
     this.materialDecoration = const material.InputDecoration(),
@@ -50,63 +51,63 @@ class NativeTextField extends BaseNativeStatelessWidget<
     this.scrollController,
     this.scrollPhysics,
     this.cupertinoDecoration,
-    this.padding,
+    this.padding = const EdgeInsets.all(6.0),
     this.placeholder,
     this.placeholderStyle,
     this.prefix,
-    this.prefixMode,
+    this.prefixMode = OverlayVisibilityMode.always,
     this.suffix,
-    this.suffixMode,
-    this.clearButtonMode,
+    this.suffixMode = OverlayVisibilityMode.always,
+    this.clearButtonMode = OverlayVisibilityMode.never,
   });
 
-  final TextEditingController controller;
-  final FocusNode focusNode;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
   final material.InputDecoration materialDecoration;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final TextCapitalization textCapitalization;
-  final TextStyle style;
-  final StrutStyle strutStyle;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
   final TextAlign textAlign;
-  final TextAlignVertical textAlignVertical;
-  final TextDirection textDirection;
+  final TextAlignVertical? textAlignVertical;
+  final TextDirection? textDirection;
   final bool autofocus;
   final bool obscureText;
   final bool autocorrect;
   final bool enableSuggestions;
   final int maxLines;
-  final int minLines;
+  final int? minLines;
   final bool expands;
   final bool readOnly;
-  final ToolbarOptions toolbarOptions;
-  final bool showCursor;
-  final int maxLength;
-  final MaxLengthEnforcement maxLengthEnforcement;
-  final ValueChanged<String> onChanged;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onSubmitted;
-  final List<TextInputFormatter> inputFormatters;
-  final bool enabled;
+  final ToolbarOptions? toolbarOptions;
+  final bool? showCursor;
+  final int? maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool? enabled;
   final double cursorWidth;
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final Brightness keyboardAppearance;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
   final DragStartBehavior dragStartBehavior;
-  final GestureTapCallback onTap;
-  final material.InputCounterWidgetBuilder buildCounter;
-  final ScrollPhysics scrollPhysics;
-  final ScrollController scrollController;
+  final GestureTapCallback? onTap;
+  final material.InputCounterWidgetBuilder? buildCounter;
+  final ScrollPhysics? scrollPhysics;
+  final ScrollController? scrollController;
 
-  final BoxDecoration cupertinoDecoration;
+  final BoxDecoration? cupertinoDecoration;
   final EdgeInsetsGeometry padding;
-  final String placeholder;
-  final TextStyle placeholderStyle;
-  final Widget prefix;
+  final String? placeholder;
+  final TextStyle? placeholderStyle;
+  final Widget? prefix;
   final cupertino.OverlayVisibilityMode prefixMode;
-  final Widget suffix;
+  final Widget? suffix;
   final cupertino.OverlayVisibilityMode suffixMode;
   final cupertino.OverlayVisibilityMode clearButtonMode;
 
@@ -193,7 +194,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
       inputFormatters: inputFormatters,
       enabled: enabled,
       cursorWidth: cursorWidth,
-      cursorRadius: cursorRadius,
+      cursorRadius: cursorRadius ?? const Radius.circular(2.0),
       cursorColor: cursorColor,
       keyboardAppearance: keyboardAppearance,
       scrollPadding: scrollPadding,

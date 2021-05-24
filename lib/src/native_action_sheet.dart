@@ -8,12 +8,12 @@ import '../flutter_native.dart';
 import 'native_base.dart';
 
 class NativeActionSheet {
-  static Future<T> showActionSheet<T>({
-    @required BuildContext context,
+  static Future<T?> showActionSheet<T>({
+    required BuildContext context,
     bool barrierDismissible = true,
-    @required Widget title,
-    @required List<NativeActionSheetAction> actions,
-    @required NativeActionSheetAction cancelAction,
+    required Widget title,
+    required List<NativeActionSheetAction> actions,
+    required NativeActionSheetAction cancelAction,
   }) {
     if (platformWidget == PlatformWidget.cupertino) {
       return cupertino.showCupertinoModalPopup<T>(
@@ -33,7 +33,7 @@ class NativeActionSheet {
           vertical: 8,
         ),
         child: DefaultTextStyle(
-          style: material.Theme.of(context).textTheme.headline6,
+          style: material.Theme.of(context).textTheme.headline6!,
           child: title,
         ),
       )
@@ -56,15 +56,15 @@ class NativeActionSheet {
 
 class NativeActionSheetAction extends BaseNativeStatelessWidget<
     cupertino.CupertinoActionSheetAction, material.ListTile> {
-  final Icon leading;
+  final Icon? leading;
   final Widget child;
   final VoidCallback onPressed;
   final bool isDefaultAction;
   final bool isDestructiveAction;
 
   NativeActionSheetAction({
-    @required this.child,
-    @required this.onPressed,
+    required this.child,
+    required this.onPressed,
     this.leading,
     this.isDefaultAction = false,
     this.isDestructiveAction = false,
@@ -82,8 +82,8 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
             leading == null
                 ? SizedBox.shrink()
                 : Icon(
-                    leading.icon,
-                    size: leading.size,
+                    leading!.icon,
+                    size: leading!.size,
                     color: isDestructiveAction
                         ? cupertino.CupertinoDynamicColor.resolve(
                             cupertino.CupertinoColors.systemRed,
@@ -108,8 +108,8 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
       leading: leading == null
           ? null
           : Icon(
-              leading.icon,
-              size: leading.size,
+              leading!.icon,
+              size: leading!.size,
             ),
       title: DefaultTextStyle(
         style: TextStyle(

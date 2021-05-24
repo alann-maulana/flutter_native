@@ -7,9 +7,9 @@ import 'native_base.dart';
 class NativeIconButton
     extends BaseNativeStatelessWidget<CupertinoButton, IconButton> {
   NativeIconButton({
-    Key key,
-    @required this.icon,
-    @required this.onPressed,
+    Key? key,
+    required this.icon,
+    required this.onPressed,
     this.color,
     this.focusColor,
     this.hoverColor,
@@ -29,21 +29,21 @@ class NativeIconButton
 
   final Widget icon;
   final VoidCallback onPressed;
-  final Color color;
-  final Color focusColor;
-  final Color hoverColor;
-  final Color highlightColor;
-  final Color splashColor;
-  final Color disabledColor;
-  final double iconSize;
-  final EdgeInsetsGeometry padding;
-  final Alignment alignment;
-  final FocusNode focusNode;
-  final bool autoFocus;
-  final String tooltip;
-  final bool enableFeedback;
-  final double pressedOpacity;
-  final BorderRadius borderRadius;
+  final Color? color;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final Color? highlightColor;
+  final Color? splashColor;
+  final Color? disabledColor;
+  final double? iconSize;
+  final EdgeInsetsGeometry? padding;
+  final Alignment? alignment;
+  final FocusNode? focusNode;
+  final bool? autoFocus;
+  final String? tooltip;
+  final bool? enableFeedback;
+  final double? pressedOpacity;
+  final BorderRadius? borderRadius;
 
   @override
   CupertinoButton buildCupertino(BuildContext context) {

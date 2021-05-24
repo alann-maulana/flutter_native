@@ -8,15 +8,15 @@ class NativeTabScaffold extends BaseNativeStatelessWidget<
     cupertino.CupertinoTabScaffold, material.Scaffold> {
   final List<BottomNavigationBarItem> items;
   final int currentIndex;
-  final ValueChanged<int> onTap;
+  final ValueChanged<int>? onTap;
   final List<WidgetBuilder> builders;
-  final cupertino.CupertinoTabController cupertinoController;
-  final material.PageController materialController;
-  final Color backgroundColor;
+  final cupertino.CupertinoTabController? cupertinoController;
+  final material.PageController? materialController;
+  final Color? backgroundColor;
 
   NativeTabScaffold({
-    @required this.items,
-    @required this.builders,
+    required this.items,
+    required this.builders,
     this.currentIndex = 0,
     this.onTap,
     this.cupertinoController,
@@ -37,7 +37,6 @@ class NativeTabScaffold extends BaseNativeStatelessWidget<
 
   @override
   material.Scaffold buildMaterial(cupertino.BuildContext context) {
-    assert(currentIndex != null);
     assert(onTap != null);
 
     return material.Scaffold(

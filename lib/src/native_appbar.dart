@@ -8,24 +8,23 @@ class NativeAppBar
     extends BaseNativeStatelessWidget<StatefulWidget, material.AppBar>
     implements PreferredSizeWidget {
   final Widget title;
-  final Widget leading;
-  final Widget iosTrailing;
+  final Widget? leading;
+  final Widget? iosTrailing;
   final bool iosLargeTitle;
-  final List<Widget> androidActions;
+  final List<Widget>? androidActions;
   final String iosPreviousPageTitle;
-  final EdgeInsetsDirectional padding;
+  final EdgeInsetsDirectional? padding;
 
   NativeAppBar({
-    this.title,
+    required this.title,
     this.leading,
     this.iosTrailing,
     this.iosLargeTitle = false,
     this.androidActions,
     this.iosPreviousPageTitle = 'Back',
     this.padding,
-  })  : assert(title != null),
-        preferredSize = Size.fromHeight(56.0),
-        cupertinoNavigationBar = iosLargeTitle == null
+  })  : preferredSize = Size.fromHeight(56.0),
+        cupertinoNavigationBar = iosLargeTitle == true
             ? null
             : cupertino.CupertinoNavigationBar(
                 middle: title,
@@ -34,7 +33,7 @@ class NativeAppBar
                 previousPageTitle: iosPreviousPageTitle,
               );
 
-  final cupertino.CupertinoNavigationBar cupertinoNavigationBar;
+  final cupertino.CupertinoNavigationBar? cupertinoNavigationBar;
 
   @override
   material.AppBar buildMaterial(BuildContext context) {
@@ -57,7 +56,7 @@ class NativeAppBar
       );
     }
 
-    return cupertinoNavigationBar;
+    return cupertinoNavigationBar!;
   }
 
   @override

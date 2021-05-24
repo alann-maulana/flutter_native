@@ -6,7 +6,7 @@ typedef T NativeBuilder<T>(BuildContext context);
 
 abstract class BaseNativeStatelessWidget<CUPERTINO extends Widget,
     MATERIAL extends Widget> extends StatelessWidget {
-  const BaseNativeStatelessWidget({Key key}) : super(key: key);
+  const BaseNativeStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,18 +1,16 @@
-import 'package:flutter/foundation.dart';
-
 import '../flutter_native.dart';
 
 class NativeValue<T> {
-  final T _materialValue;
-  final T _cupertinoValue;
+  final T? _materialValue;
+  final T? _cupertinoValue;
 
   NativeValue({
-    @required T material,
-    @required T cupertino,
+    T? material,
+    T? cupertino,
   })  : _materialValue = material,
         _cupertinoValue = cupertino;
 
-  T get value {
+  T? get value {
     if (platformWidget == PlatformWidget.cupertino) {
       return _cupertinoValue;
     }
