@@ -96,21 +96,21 @@ class _MyHomePageState extends State<MyHomePage> {
             material: (context) => Icon(Icons.home),
             cupertino: (context) => Icon(CupertinoIcons.home),
           ),
-          title: Text('Home'),
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: NativeStatelessWidget(
             material: (context) => Icon(Icons.account_circle),
             cupertino: (context) => Icon(CupertinoIcons.profile_circled),
           ),
-          title: Text('Profile'),
+          label: 'Profile',
         ),
         BottomNavigationBarItem(
           icon: NativeStatelessWidget(
             material: (context) => Icon(Icons.settings),
             cupertino: (context) => Icon(CupertinoIcons.settings),
           ),
-          title: Text('Setting'),
+          label: 'Setting',
         ),
       ],
       builders: <WidgetBuilder>[
