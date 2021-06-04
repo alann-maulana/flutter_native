@@ -1,52 +1,23 @@
-part of flutter_native;
+import 'package:flutter/widgets.dart';
+
+import '../flutter_native.dart';
 
 typedef T NativeBuilder<T>(BuildContext context);
 
-abstract class _NativeStatelessWidget<IOS extends Widget,
-    ANDROID extends Widget> extends StatelessWidget {
-  _NativeStatelessWidget({Key key}) : super(key: key);
+abstract class BaseNativeStatelessWidget<CUPERTINO extends Widget,
+    MATERIAL extends Widget> extends StatelessWidget {
+  const BaseNativeStatelessWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      return buildAndroid(context);
-    } else if (Platform.isIOS) {
-      return buildIOS(context);
+    if (platformWidget == PlatformWidget.cupertino) {
+      return buildCupertino(context);
     }
 
-    throw UnsupportedError(
-        'This package does not supported: ' + Platform.operatingSystem);
+    return buildMaterial(context);
   }
 
-  IOS buildIOS(BuildContext context);
+  CUPERTINO buildCupertino(BuildContext context);
 
-  ANDROID buildAndroid(BuildContext context);
-}
-
-abstract class _NativeStatefulWidget<IOS extends Widget, ANDROID extends Widget>
-    extends StatefulWidget {
-  _NativeStatefulWidget({Key key}) : super(key: key);
-
-  @override
-  _NativeStatefulWidgetState createState() {
-    return _NativeStatefulWidgetState();
-  }
-
-  IOS buildIOS(BuildContext context);
-
-  ANDROID buildAndroid(BuildContext context);
-}
-
-class _NativeStatefulWidgetState extends State<_NativeStatefulWidget> {
-  @override
-  Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      return widget.buildAndroid(context);
-    } else if (Platform.isIOS) {
-      return widget.buildIOS(context);
-    }
-
-    throw UnsupportedError(
-        'This package does not supported: ' + Platform.operatingSystem);
-  }
+  MATERIAL buildMaterial(BuildContext context);
 }

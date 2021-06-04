@@ -1,6 +1,5 @@
 import 'package:example/form_dialog.dart';
 import 'package:example/home_page.dart';
-import 'package:example/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -121,9 +120,12 @@ class ListViewPageState extends State<ListViewPage> {
 
   _handleShowAddForm() async {
     final result = await Navigator.push(
-        context,
-        new NativePageRoute(
-            builder: (context) => new FormDialog(), fullscreenDialog: true));
+      context,
+      NativePageRoute.create(
+        builder: (context) => FormDialog(),
+        fullscreenDialog: true,
+      ),
+    );
 
     if (result == true) {
       print('Saved');
@@ -172,10 +174,10 @@ class ListViewPageState extends State<ListViewPage> {
       ),
       onRefresh: _list != null ? _handleRefresh : null,
       body: NativeStatelessWidget(
-          android: (context) => listView == null ? loading : listView,
-          ios: (context) => listView == null
-              ? SliverFillRemaining(child: loading)
-              : listView),
+        material: (context) => listView == null ? loading : listView,
+        cupertino: (context) =>
+            listView == null ? SliverFillRemaining(child: loading) : listView,
+      ),
     );
   }
 }

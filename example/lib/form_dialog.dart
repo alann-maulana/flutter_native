@@ -18,19 +18,24 @@ class FormDialogState extends State<FormDialog> {
   Widget build(BuildContext context) {
     final form = Center(child: Text('FORM'));
     return new NativeScaffold(
-        appBar: NativeAppBar(
-          title: Text('Add New Form'),
-          iosTrailing: NativeButton(
-              child: Text('Save'),
-              padding: const EdgeInsets.all(0.0),
-              onPressed: _handleSave),
-          androidActions: <Widget>[
-            NativeIconButton(icon: Icon(Icons.save), onPressed: _handleSave)
-          ],
+      appBar: NativeAppBar(
+        title: Text('Add New Form'),
+        iosTrailing: NativeButton(
+          child: Text('Save'),
+          padding: const EdgeInsets.all(0.0),
+          onPressed: _handleSave,
         ),
-        body: new NativeStatelessWidget(
-          android: (context) => form,
-          ios: (context) => SliverFillRemaining(child: form),
-        ));
+        androidActions: <Widget>[
+          NativeIconButton(
+            icon: Icon(Icons.save),
+            onPressed: _handleSave,
+          )
+        ],
+      ),
+      body: new NativeStatelessWidget(
+        material: (context) => form,
+        cupertino: (context) => SliverFillRemaining(child: form),
+      ),
+    );
   }
 }
