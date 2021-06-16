@@ -10,12 +10,12 @@ class Platform extends platform.FakePlatform {
 
   @override
   String get operatingSystem {
-    if (html.window.matchMedia('only screen and (pointer: fine)').matches) {
-      return "linux";
-    }
-
     if (_navigatorPlatform.startsWith('mac')) {
       return "macos";
+    }
+
+    if (_navigatorPlatform.startsWith('win')) {
+      return "windows";
     }
 
     if (_navigatorPlatform.contains('iphone') ||
@@ -24,8 +24,12 @@ class Platform extends platform.FakePlatform {
       return "ios";
     }
 
-    if (_navigatorPlatform.startsWith('win')) {
-      return "windows";
+    if (_navigatorPlatform.contains('android')) {
+      return "android";
+    }
+
+    if (html.window.matchMedia('only screen and (pointer: fine)').matches) {
+      return "linux";
     }
 
     return "android";
