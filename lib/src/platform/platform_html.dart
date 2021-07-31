@@ -1,7 +1,8 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 
-import 'package:platform/platform.dart' as platform;
+// ignore: implementation_imports
+import 'package:platform/src/testing/fake_platform.dart' as platform;
 
 class Platform extends platform.FakePlatform {
   final String _navigatorPlatform = () {
