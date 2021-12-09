@@ -1,42 +1,24 @@
-part of flutter_native;
+import 'package:flutter/widgets.dart';
 
-class NativeStatelessWidget extends _NativeStatelessWidget<Widget, Widget> {
-  final NativeBuilder<Widget> android;
-  final NativeBuilder<Widget> ios;
+import 'native_base.dart';
 
-  NativeStatelessWidget({Key key, @required this.android, @required this.ios})
-      : assert(android != null),
-        assert(ios != null),
-        super(key: key);
+class NativeStatelessWidget extends BaseNativeStatelessWidget<Widget, Widget> {
+  final NativeBuilder<Widget> material;
+  final NativeBuilder<Widget> cupertino;
+
+  const NativeStatelessWidget({
+    Key? key,
+    required this.material,
+    required this.cupertino,
+  }) : super(key: key);
 
   @override
-  Widget buildAndroid(BuildContext context) {
-    return android(context);
+  Widget buildMaterial(BuildContext context) {
+    return material(context);
   }
 
   @override
-  Widget buildIOS(BuildContext context) {
-    return ios(context);
-  }
-}
-
-
-class NativeStatefulWidget extends _NativeStatefulWidget<Widget, Widget> {
-  final NativeBuilder<Widget> android;
-  final NativeBuilder<Widget> ios;
-
-  NativeStatefulWidget({Key key, @required this.android, @required this.ios})
-      : assert(android != null),
-        assert(ios != null),
-        super(key: key);
-
-  @override
-  Widget buildAndroid(BuildContext context) {
-    return android(context);
-  }
-
-  @override
-  Widget buildIOS(BuildContext context) {
-    return ios(context);
+  Widget buildCupertino(BuildContext context) {
+    return cupertino(context);
   }
 }

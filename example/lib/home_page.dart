@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
+import 'setting_page.dart';
+
 class MyHomePage extends StatefulWidget {
-  static const ROUTE = '/';
-  MyHomePage({Key key, this.title}) : super(key: key);
+  static const route = '/';
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -19,10 +21,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
 
   _handleShowList() async {
-    final result = await Navigator.pushNamed(context, ListViewPage.ROUTE);
+    final result = await Navigator.pushNamed(context, ListViewPage.route);
 
     if (result == true) {
-      print('Saved');
+      debugPrint('Saved');
     }
   }
 
@@ -33,17 +35,18 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           NativeSwitch(
-              value: checked,
-              onChanged: (flag) => setState(() => checked = !checked)),
+            value: checked,
+            onChanged: (flag) => setState(() => checked = !checked),
+          ),
           NativeButton(
-            child: Text('Button'),
+            child: const Text('Button'),
             onPressed: () {},
           ),
           NativeIconButton(
-            icon: Icon(Icons.title),
+            icon: const Icon(Icons.title),
             onPressed: () {},
           ),
-          NativeProgressIndicator(
+          const NativeProgressIndicator(
             radius: 20.0,
           )
         ],
@@ -52,83 +55,83 @@ class _MyHomePageState extends State<MyHomePage> {
     final home = NativeScaffold(
       appBar: NativeAppBar(
         title: Text(widget.title),
-        iosTrailing: new NativeIconButton(
-          icon: Icon(CupertinoIcons.add),
+        iosTrailing: NativeIconButton(
+          icon: const Icon(CupertinoIcons.add),
           onPressed: _handleShowList,
         ),
       ),
       body: NativeStatelessWidget(
-          android: (context) => body,
-          ios: (context) => SliverFillRemaining(child: body)),
+        material: (context) => body,
+        cupertino: (context) => SliverFillRemaining(child: body),
+      ),
       androidFab: FloatingActionButton(
         onPressed: _handleShowList,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
 
     final profile = NativeScaffold(
       appBar: NativeAppBar(
-        title: Text('Native Profile'),
+        title: const Text('Native Profile'),
         iosLargeTitle: false,
       ),
       body: NativeStatelessWidget(
-          android: (context) => Center(
-                child: Text('Profile Page'),
-              ),
-          ios: (context) => SliverFillRemaining(
-                  child: Center(
-                child: Text('Profile Page'),
-              ))),
+        material: (context) => const Center(
+          child: Text('Profile Page'),
+        ),
+        cupertino: (context) => const SliverFillRemaining(
+          child: Center(
+            child: Text('Profile Page'),
+          ),
+        ),
+      ),
     );
 
-    final setting = NativeScaffold(
-      appBar: NativeAppBar(
-        title: Text('Native Setting'),
-        iosLargeTitle: false,
-      ),
-      body: NativeStatelessWidget(
-          android: (context) => Center(
-                child: Text('Setting Page'),
-              ),
-          ios: (context) => SliverFillRemaining(
-                  child: Center(
-                child: Text('Setting Page'),
-              ))),
-    );
+    const setting = SettingPage();
 
     return NativeTabScaffold(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: NativeStatelessWidget(
-                  android: (context) => Icon(Icons.home),
-                  ios: (context) => Icon(CupertinoIcons.home)),
-              title: Text('Home')),
-          BottomNavigationBarItem(
-              icon: NativeStatelessWidget(
-                  android: (context) => Icon(Icons.account_circle),
-                  ios: (context) => Icon(CupertinoIcons.profile_circled)),
-              title: Text('Profile')),
-          BottomNavigationBarItem(
-              icon: NativeStatelessWidget(
-                  android: (context) => Icon(Icons.settings),
-                  ios: (context) => Icon(CupertinoIcons.settings)),
-              title: Text('Setting')),
-        ],
-        builders: <WidgetBuilder>[
-          (context) => NativeStatelessWidget(
-              android: (context) => home,
-              ios: (context) =>
-                  new CupertinoTabView(builder: (context) => home)),
-          (context) => NativeStatelessWidget(
-              android: (context) => profile,
-              ios: (context) =>
-                  new CupertinoTabView(builder: (context) => profile)),
-          (context) => NativeStatelessWidget(
-              android: (context) => setting,
-              ios: (context) =>
-                  new CupertinoTabView(builder: (context) => setting)),
-        ],
-        androidCurrentIndex: _index,
-        androidOnTap: (index) => setState(() => _index = index));
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: NativeStatelessWidget(
+            material: (context) => const Icon(Icons.home),
+            cupertino: (context) => const Icon(CupertinoIcons.home),
+          ),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: NativeStatelessWidget(
+            material: (context) => const Icon(Icons.account_circle),
+            cupertino: (context) => const Icon(CupertinoIcons.profile_circled),
+          ),
+          label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: NativeStatelessWidget(
+            material: (context) => const Icon(Icons.settings),
+            cupertino: (context) => const Icon(CupertinoIcons.settings),
+          ),
+          label: 'Setting',
+        ),
+      ],
+      builders: <WidgetBuilder>[
+        (context) => NativeStatelessWidget(
+              material: (context) => home,
+              cupertino: (context) =>
+                  CupertinoTabView(builder: (context) => home),
+            ),
+        (context) => NativeStatelessWidget(
+              material: (context) => profile,
+              cupertino: (context) =>
+                  CupertinoTabView(builder: (context) => profile),
+            ),
+        (context) => NativeStatelessWidget(
+              material: (context) => setting,
+              cupertino: (context) =>
+                  CupertinoTabView(builder: (context) => setting),
+            ),
+      ],
+      currentIndex: _index,
+      onTap: (index) => setState(() => _index = index),
+    );
   }
 }

@@ -1,17 +1,18 @@
 import 'package:example/form_dialog.dart';
 import 'package:example/home_page.dart';
-import 'package:example/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
 class ListViewPage extends StatefulWidget {
-  static const ROUTE = MyHomePage.ROUTE + '/listview';
+  static const route = MyHomePage.route + '/listview';
+
+  const ListViewPage({Key key}) : super(key: key);
 
   @override
   ListViewPageState createState() {
-    return new ListViewPageState();
+    return ListViewPageState();
   }
 }
 
@@ -19,7 +20,7 @@ class ListViewPageState extends State<ListViewPage> {
   List<dynamic> _list;
 
   Future<void> _handleRefresh() async {
-    await new Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     if (mounted) {
       setState(() {
         _list = [
@@ -116,17 +117,20 @@ class ListViewPageState extends State<ListViewPage> {
         ];
       });
     }
-    return null;
+    return;
   }
 
   _handleShowAddForm() async {
     final result = await Navigator.push(
-        context,
-        new NativePageRoute(
-            builder: (context) => new FormDialog(), fullscreenDialog: true));
+      context,
+      NativePageRoute.create(
+        builder: (context) => const FormDialog(),
+        fullscreenDialog: true,
+      ),
+    );
 
     if (result == true) {
-      print('Saved');
+      debugPrint('Saved');
     }
   }
 
@@ -144,38 +148,37 @@ class ListViewPageState extends State<ListViewPage> {
     if (_list != null) {
       final children = _list.map((json) {
         return NativeListTile(
-          title: Text(json['name'], style: TextStyle(fontSize: 18.0)),
-          subtitle: Text(json['email'], style: TextStyle(fontSize: 14.0)),
+          title: Text(json['name'], style: const TextStyle(fontSize: 18.0)),
+          subtitle: Text(json['email'], style: const TextStyle(fontSize: 14.0)),
         );
       }).toList();
 
       listView = NativeListView(children: children);
     }
 
-    final loading = Center(
+    const loading = Center(
         child: NativeProgressIndicator(
       radius: 20.0,
     ));
 
-    return new NativeScaffold(
+    return NativeScaffold(
       appBar: NativeAppBar(
-        title: Text('List View'),
+        title: const Text('List View'),
         iosLargeTitle: true,
-        iosTrailing: new NativeIconButton(
-          icon: Icon(CupertinoIcons.add),
+        iosTrailing: NativeIconButton(
+          icon: const Icon(CupertinoIcons.add),
           onPressed: _handleShowAddForm,
         ),
       ),
       androidFab: FloatingActionButton(
         onPressed: _handleShowAddForm,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       onRefresh: _list != null ? _handleRefresh : null,
       body: NativeStatelessWidget(
-          android: (context) => listView == null ? loading : listView,
-          ios: (context) => listView == null
-              ? SliverFillRemaining(child: loading)
-              : listView),
+        material: (context) => listView ?? loading,
+        cupertino: (context) => listView ?? const SliverFillRemaining(child: loading),
+      ),
     );
   }
 }

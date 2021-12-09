@@ -1,91 +1,31 @@
-part of flutter_native;
+import 'package:flutter/cupertino.dart' as cupertino;
+import 'package:flutter/material.dart' as material;
+import 'package:flutter/widgets.dart';
 
-class NativeAppBar2 extends _NativeStatefulWidget<Widget, material.AppBar>
+import 'native_base.dart';
+
+class NativeAppBar
+    extends BaseNativeStatelessWidget<StatefulWidget, material.AppBar>
     implements PreferredSizeWidget {
   final Widget title;
-  final Widget leading;
-  final Widget iosTrailing;
+  final Widget? leading;
+  final Widget? iosTrailing;
   final bool iosLargeTitle;
-  final List<Widget> androidActions;
+  final List<Widget>? androidActions;
   final String iosPreviousPageTitle;
-
-  material.AppBar _androidBar;
-
-  NativeAppBar2({
-    this.title,
-    this.leading,
-    this.iosTrailing,
-    this.iosLargeTitle = false,
-    this.androidActions,
-    this.iosPreviousPageTitle = 'Back',
-  }) : assert(title != null);
-
-  @override
-  material.AppBar buildAndroid(BuildContext context) {
-    if (_androidBar == null) {
-      _androidBar = material.AppBar(
-        title: title,
-        leading: leading,
-        actions: androidActions,
-      );
-    }
-
-    return _androidBar;
-  }
-
-  @override
-  Widget buildIOS(BuildContext context) {
-    return iosLargeTitle
-        ? cupertino.CupertinoSliverNavigationBar(
-            largeTitle: title,
-            leading: leading,
-            trailing: iosTrailing,
-            previousPageTitle: iosPreviousPageTitle,
-          )
-        : cupertino.CupertinoNavigationBar(
-            middle: title,
-            leading: leading,
-            trailing: iosTrailing,
-            previousPageTitle: iosPreviousPageTitle,
-          );
-  }
-
-  @override
-  Size get preferredSize =>
-      Platform.isAndroid ? _androidBar.preferredSize : null;
-}
-
-class NativeAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final material.AppBar _androidBar;
-  final dynamic _iosBar;
-
-  final Widget title;
-  final Widget leading;
-  final Widget iosTrailing;
-  final bool iosLargeTitle;
-  final List<Widget> androidActions;
-  final String iosPreviousPageTitle;
+  final EdgeInsetsDirectional? padding;
 
   NativeAppBar({
-    this.title,
+    required this.title,
     this.leading,
     this.iosTrailing,
     this.iosLargeTitle = false,
     this.androidActions,
     this.iosPreviousPageTitle = 'Back',
-  })  : assert(title != null),
-        this._androidBar = material.AppBar(
-          title: title,
-          leading: leading,
-          actions: androidActions,
-        ),
-        this._iosBar = iosLargeTitle
-            ? cupertino.CupertinoSliverNavigationBar(
-                largeTitle: title,
-                leading: leading,
-                trailing: iosTrailing,
-                previousPageTitle: iosPreviousPageTitle,
-              )
+    this.padding,
+  })  : preferredSize = Size.fromHeight(56.0),
+        cupertinoNavigationBar = iosLargeTitle == true
+            ? null
             : cupertino.CupertinoNavigationBar(
                 middle: title,
                 leading: leading,
@@ -93,23 +33,32 @@ class NativeAppBar extends StatefulWidget implements PreferredSizeWidget {
                 previousPageTitle: iosPreviousPageTitle,
               );
 
+  final cupertino.CupertinoNavigationBar? cupertinoNavigationBar;
+
   @override
-  _NativeAppBarState createState() {
-    return _NativeAppBarState();
+  material.AppBar buildMaterial(BuildContext context) {
+    return material.AppBar(
+      title: title,
+      leading: leading,
+      actions: androidActions,
+    );
   }
 
   @override
-  Size get preferredSize =>
-      Platform.isAndroid ? _androidBar.preferredSize : null;
-}
-
-class _NativeAppBarState extends State<NativeAppBar> {
-  @override
-  Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
-      return widget._androidBar;
+  StatefulWidget buildCupertino(BuildContext context) {
+    if (iosLargeTitle) {
+      return cupertino.CupertinoSliverNavigationBar(
+        largeTitle: title,
+        leading: leading,
+        trailing: iosTrailing,
+        padding: padding,
+        previousPageTitle: iosPreviousPageTitle,
+      );
     }
 
-    return widget._iosBar;
+    return cupertinoNavigationBar!;
   }
+
+  @override
+  final Size preferredSize;
 }

@@ -3,9 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
 class FormDialog extends StatefulWidget {
+  const FormDialog({Key key}) : super(key: key);
+
   @override
   FormDialogState createState() {
-    return new FormDialogState();
+    return FormDialogState();
   }
 }
 
@@ -16,21 +18,26 @@ class FormDialogState extends State<FormDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final form = Center(child: Text('FORM'));
-    return new NativeScaffold(
-        appBar: NativeAppBar(
-          title: Text('Add New Form'),
-          iosTrailing: NativeButton(
-              child: Text('Save'),
-              padding: const EdgeInsets.all(0.0),
-              onPressed: _handleSave),
-          androidActions: <Widget>[
-            NativeIconButton(icon: Icon(Icons.save), onPressed: _handleSave)
-          ],
+    const form = Center(child: Text('FORM'));
+    return NativeScaffold(
+      appBar: NativeAppBar(
+        title: const Text('Add New Form'),
+        iosTrailing: NativeButton(
+          child: const Text('Save'),
+          padding: const EdgeInsets.all(0.0),
+          onPressed: _handleSave,
         ),
-        body: new NativeStatelessWidget(
-          android: (context) => form,
-          ios: (context) => SliverFillRemaining(child: form),
-        ));
+        androidActions: <Widget>[
+          NativeIconButton(
+            icon: const Icon(Icons.save),
+            onPressed: _handleSave,
+          )
+        ],
+      ),
+      body: NativeStatelessWidget(
+        material: (context) => form,
+        cupertino: (context) => const SliverFillRemaining(child: form),
+      ),
+    );
   }
 }

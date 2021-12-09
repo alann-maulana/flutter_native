@@ -1,19 +1,27 @@
-part of flutter_native;
+import 'package:flutter/widgets.dart';
 
-class NativeListView extends _NativeStatelessWidget<SliverList, ListView> {
+import 'native_base.dart';
+
+class NativeListView extends BaseNativeStatelessWidget<SliverList, ListView> {
   final List<Widget> children;
+  final bool reverse;
 
-  NativeListView({@required this.children});
+  const NativeListView({
+    Key? key,
+    required this.children,
+    this.reverse = false,
+  }) : super(key: key);
 
   @override
-  ListView buildAndroid(BuildContext context) {
+  ListView buildMaterial(BuildContext context) {
     return ListView(
+      reverse: reverse,
       children: children,
     );
   }
 
   @override
-  SliverList buildIOS(BuildContext context) {
+  SliverList buildCupertino(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) => children[index],
