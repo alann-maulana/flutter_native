@@ -82,6 +82,10 @@ class NativeScaffold extends BaseNativeStatelessWidget<
   }
 }
 
+enum ResponsiveLayout { desktop, tablet, mobile }
+
+typedef ResponsiveBodyBuilder = Widget Function(ResponsiveLayout layout);
+
 class ResponsiveScaffold extends StatelessWidget {
   const ResponsiveScaffold({
     Key? key,
@@ -106,7 +110,7 @@ class ResponsiveScaffold extends StatelessWidget {
 
   final bool? centerTitle;
 
-  final Widget? body;
+  final ResponsiveBodyBuilder? body;
 
   final Widget? trailing;
 
@@ -172,7 +176,9 @@ class ResponsiveScaffold extends StatelessWidget {
                   body: Row(
                     children: <Widget>[
                       Expanded(
-                        child: body ?? Container(),
+                        child: body != null
+                            ? body!(ResponsiveLayout.desktop)
+                            : Container(),
                       ),
                       if (endDrawer != null) ...[
                         SizedBox(
@@ -232,7 +238,9 @@ class ResponsiveScaffold extends StatelessWidget {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: body ?? Container(),
+                  child: body != null
+                      ? body!(ResponsiveLayout.tablet)
+                      : Container(),
                 ),
                 if (endDrawer != null) ...[
                   SizedBox(
@@ -291,7 +299,7 @@ class ResponsiveScaffold extends StatelessWidget {
           ]
         ],
       ),
-      body: body,
+      body: body != null ? body!(ResponsiveLayout.mobile) : null,
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation:
           material.FloatingActionButtonLocation.endFloat,
