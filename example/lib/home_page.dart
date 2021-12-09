@@ -7,8 +7,8 @@ import 'package:flutter_native/flutter_native.dart';
 import 'setting_page.dart';
 
 class MyHomePage extends StatefulWidget {
-  static const ROUTE = '/';
-  MyHomePage({Key key, this.title}) : super(key: key);
+  static const route = '/';
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -21,10 +21,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
 
   _handleShowList() async {
-    final result = await Navigator.pushNamed(context, ListViewPage.ROUTE);
+    final result = await Navigator.pushNamed(context, ListViewPage.route);
 
     if (result == true) {
-      print('Saved');
+      debugPrint('Saved');
     }
   }
 
@@ -39,14 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
             onChanged: (flag) => setState(() => checked = !checked),
           ),
           NativeButton(
-            child: Text('Button'),
+            child: const Text('Button'),
             onPressed: () {},
           ),
           NativeIconButton(
-            icon: Icon(Icons.title),
+            icon: const Icon(Icons.title),
             onPressed: () {},
           ),
-          NativeProgressIndicator(
+          const NativeProgressIndicator(
             radius: 20.0,
           )
         ],
@@ -55,8 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final home = NativeScaffold(
       appBar: NativeAppBar(
         title: Text(widget.title),
-        iosTrailing: new NativeIconButton(
-          icon: Icon(CupertinoIcons.add),
+        iosTrailing: NativeIconButton(
+          icon: const Icon(CupertinoIcons.add),
           onPressed: _handleShowList,
         ),
       ),
@@ -66,20 +66,20 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       androidFab: FloatingActionButton(
         onPressed: _handleShowList,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
 
     final profile = NativeScaffold(
       appBar: NativeAppBar(
-        title: Text('Native Profile'),
+        title: const Text('Native Profile'),
         iosLargeTitle: false,
       ),
       body: NativeStatelessWidget(
-        material: (context) => Center(
+        material: (context) => const Center(
           child: Text('Profile Page'),
         ),
-        cupertino: (context) => SliverFillRemaining(
+        cupertino: (context) => const SliverFillRemaining(
           child: Center(
             child: Text('Profile Page'),
           ),
@@ -87,28 +87,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    final setting = SettingPage();
+    const setting = SettingPage();
 
     return NativeTabScaffold(
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: NativeStatelessWidget(
-            material: (context) => Icon(Icons.home),
-            cupertino: (context) => Icon(CupertinoIcons.home),
+            material: (context) => const Icon(Icons.home),
+            cupertino: (context) => const Icon(CupertinoIcons.home),
           ),
           label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: NativeStatelessWidget(
-            material: (context) => Icon(Icons.account_circle),
-            cupertino: (context) => Icon(CupertinoIcons.profile_circled),
+            material: (context) => const Icon(Icons.account_circle),
+            cupertino: (context) => const Icon(CupertinoIcons.profile_circled),
           ),
           label: 'Profile',
         ),
         BottomNavigationBarItem(
           icon: NativeStatelessWidget(
-            material: (context) => Icon(Icons.settings),
-            cupertino: (context) => Icon(CupertinoIcons.settings),
+            material: (context) => const Icon(Icons.settings),
+            cupertino: (context) => const Icon(CupertinoIcons.settings),
           ),
           label: 'Setting',
         ),

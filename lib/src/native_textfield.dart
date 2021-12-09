@@ -9,7 +9,7 @@ import 'native_base.dart';
 
 class NativeTextField extends BaseNativeStatelessWidget<
     cupertino.CupertinoTextField, material.TextField> {
-  NativeTextField({
+  const NativeTextField({
     Key? key,
     this.controller,
     this.focusNode,
@@ -59,7 +59,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
     this.suffix,
     this.suffixMode = OverlayVisibilityMode.always,
     this.clearButtonMode = OverlayVisibilityMode.never,
-  });
+  }) : super(key: key);
 
   final TextEditingController? controller;
   final FocusNode? focusNode;

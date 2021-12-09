@@ -6,7 +6,7 @@ import 'native_base.dart';
 
 class NativeApp extends BaseNativeStatelessWidget<cupertino.CupertinoApp,
     material.MaterialApp> {
-  NativeApp({
+  const NativeApp({
     Key? key,
     this.navigatorKey,
     this.home,

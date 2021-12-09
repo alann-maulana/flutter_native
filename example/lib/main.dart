@@ -8,10 +8,12 @@ import 'package:flutter_native/flutter_native.dart';
 void main() {
   //defaultTargetPlatformWidget = PlatformWidget.cupertino;
 
-  runApp(NativeTheme(child: MyApp()));
+  runApp(const NativeTheme(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return NativeApp(
@@ -19,8 +21,8 @@ class MyApp extends StatelessWidget {
       materialTheme: NativeTheme.of(context).theme,
       cupertinoTheme: NativeTheme.of(context).cupertinoTheme,
       routes: <String, WidgetBuilder>{
-        MyHomePage.ROUTE: (_) => MyHomePage(title: 'Flutter Native Demo'),
-        ListViewPage.ROUTE: (_) => ListViewPage(),
+        MyHomePage.route: (_) => const MyHomePage(title: 'Flutter Native Demo'),
+        ListViewPage.route: (_) => const ListViewPage(),
       },
     );
   }

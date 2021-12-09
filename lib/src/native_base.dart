@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../flutter_native.dart';
 
-typedef T NativeBuilder<T>(BuildContext context);
+typedef NativeBuilder<T> = T Function(BuildContext context);
 
 abstract class BaseNativeStatelessWidget<CUPERTINO extends Widget,
     MATERIAL extends Widget> extends StatelessWidget {

@@ -6,7 +6,7 @@ import 'native_base.dart';
 
 class NativeIconButton
     extends BaseNativeStatelessWidget<CupertinoButton, IconButton> {
-  NativeIconButton({
+  const NativeIconButton({
     Key? key,
     required this.icon,
     required this.onPressed,

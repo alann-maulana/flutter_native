@@ -6,7 +6,7 @@ import 'native_base.dart';
 
 class NativeProgressIndicator
     extends BaseNativeStatelessWidget<Widget, SizedBox> {
-  NativeProgressIndicator({
+  const NativeProgressIndicator({
     Key? key,
     this.radius,
     this.value,

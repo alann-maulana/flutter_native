@@ -14,13 +14,14 @@ class NativeRefreshListView extends BaseNativeStatelessWidget<CustomScrollView,
   final EdgeInsetsGeometry? padding;
   final bool reverse;
 
-  NativeRefreshListView({
+  const NativeRefreshListView({
+    cupertino.Key? key,
     required this.children,
     required this.onRefresh,
     this.safeArea,
     this.padding,
     this.reverse = false,
-  });
+  }) : super(key: key);
 
   @override
   material.RefreshIndicator buildMaterial(BuildContext context) {

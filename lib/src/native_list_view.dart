@@ -6,10 +6,11 @@ class NativeListView extends BaseNativeStatelessWidget<SliverList, ListView> {
   final List<Widget> children;
   final bool reverse;
 
-  NativeListView({
+  const NativeListView({
+    Key? key,
     required this.children,
     this.reverse = false,
-  });
+  }) : super(key: key);
 
   @override
   ListView buildMaterial(BuildContext context) {

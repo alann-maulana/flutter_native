@@ -17,11 +17,12 @@ class NativeScaffold extends BaseNativeStatelessWidget<
   final RefreshCallback? onRefresh;
 
   const NativeScaffold({
+    cupertino.Key? key,
     this.appBar,
     required this.body,
     this.androidFab,
     this.onRefresh,
-  });
+  }) : super(key: key);
 
   @override
   cupertino.CupertinoPageScaffold buildCupertino(
