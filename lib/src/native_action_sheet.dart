@@ -5,7 +5,6 @@ import 'package:flutter/material.dart' as material;
 import 'package:flutter/widgets.dart';
 
 import '../flutter_native.dart';
-import 'native_base.dart';
 
 class NativeActionSheet {
   static Future<T?> showActionSheet<T>({
@@ -33,14 +32,14 @@ class NativeActionSheet {
           vertical: 8,
         ),
         child: DefaultTextStyle(
-          style: material.Theme.of(context).textTheme.headline6!,
+          style: material.Theme.of(context).textTheme.titleLarge!,
           child: title,
         ),
       )
     ];
 
     children.addAll(actions);
-    children.add(material.Divider(height: 0));
+    children.add(const material.Divider(height: 0));
     children.add(cancelAction);
 
     return material.showModalBottomSheet<T>(
@@ -62,7 +61,7 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
   final bool isDefaultAction;
   final bool isDestructiveAction;
 
-  NativeActionSheetAction({
+  const NativeActionSheetAction({super.key, 
     required this.child,
     required this.onPressed,
     this.leading,
@@ -80,7 +79,7 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             leading == null
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : Icon(
                     leading!.icon,
                     size: leading!.size,
@@ -91,7 +90,7 @@ class NativeActionSheetAction extends BaseNativeStatelessWidget<
                           )
                         : cupertino.CupertinoTheme.of(context).primaryColor,
                   ),
-            leading == null ? SizedBox.shrink() : SizedBox(width: 8),
+            leading == null ? const SizedBox.shrink() : const SizedBox(width: 8),
             child,
           ],
         ),

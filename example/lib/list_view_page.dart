@@ -2,13 +2,12 @@ import 'package:example/form_dialog.dart';
 import 'package:example/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
 class ListViewPage extends StatefulWidget {
   static const route = MyHomePage.route + '/listview';
 
-  const ListViewPage({Key key}) : super(key: key);
+  const ListViewPage({Key? key}) : super(key: key);
 
   @override
   ListViewPageState createState() {
@@ -17,7 +16,7 @@ class ListViewPage extends StatefulWidget {
 }
 
 class ListViewPageState extends State<ListViewPage> {
-  List<dynamic> _list;
+  List<dynamic>? _list;
 
   Future<void> _handleRefresh() async {
     await Future.delayed(const Duration(seconds: 2));
@@ -143,10 +142,10 @@ class ListViewPageState extends State<ListViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    NativeListView listView;
+    NativeListView? listView;
 
     if (_list != null) {
-      final children = _list.map((json) {
+      final children = _list!.map((json) {
         return NativeListTile(
           title: Text(json['name'], style: const TextStyle(fontSize: 18.0)),
           subtitle: Text(json['email'], style: const TextStyle(fontSize: 14.0)),
@@ -177,7 +176,8 @@ class ListViewPageState extends State<ListViewPage> {
       onRefresh: _list != null ? _handleRefresh : null,
       body: NativeStatelessWidget(
         material: (context) => listView ?? loading,
-        cupertino: (context) => listView ?? const SliverFillRemaining(child: loading),
+        cupertino: (context) =>
+            listView ?? const SliverFillRemaining(child: loading),
       ),
     );
   }

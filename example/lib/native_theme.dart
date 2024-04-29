@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NativeThemes {
   static ThemeData themeData(Brightness brightness) {
     return ThemeData(
       brightness: brightness,
-      primaryColor: brightness == Brightness.light ? Colors.blue : Colors.black,
-      accentColor: brightness == Brightness.light ? null : Colors.blueAccent,
+      primaryColor: brightness == Brightness.light ? Colors.blue : Colors.black, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: brightness == Brightness.light ? null : Colors.blueAccent),
     );
   }
 
@@ -27,10 +25,10 @@ class NativeThemes {
 class _NativeInheritedWidget extends InheritedWidget {
   final NativeThemeState data;
 
-  _NativeInheritedWidget({
-    this.data,
-    Key key,
-    @required Widget child,
+  const _NativeInheritedWidget({
+    required this.data,
+    Key? key,
+    required Widget child,
   }) : super(key: key, child: child);
 
   @override
@@ -44,25 +42,25 @@ class NativeTheme extends StatefulWidget {
   final Brightness brightness;
 
   const NativeTheme({
-    Key key,
+    Key? key,
     this.brightness = Brightness.light,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
 
   @override
-  NativeThemeState createState() => new NativeThemeState();
+  NativeThemeState createState() => NativeThemeState();
 
-  static NativeThemeState of(BuildContext context) {
-    _NativeInheritedWidget inherited =
+  static NativeThemeState? of(BuildContext context) {
+    _NativeInheritedWidget? inherited =
         (context.dependOnInheritedWidgetOfExactType<_NativeInheritedWidget>());
-    return inherited.data;
+    return inherited?.data;
   }
 }
 
 class NativeThemeState extends State<NativeTheme> {
-  Brightness _brightness;
-  ThemeData _theme;
-  CupertinoThemeData _cupertinoTheme;
+  late Brightness _brightness;
+  late ThemeData _theme;
+  late CupertinoThemeData _cupertinoTheme;
 
   Brightness get brightness => _brightness;
   ThemeData get theme => _theme;

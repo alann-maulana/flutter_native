@@ -52,7 +52,7 @@ class PopupUtils {
     bool? isScrollControlled,
     Widget? dismiss,
   }) async {
-    final shape = RoundedRectangleBorder(
+    const shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(16),
         topRight: Radius.circular(16),
@@ -69,26 +69,26 @@ class PopupUtils {
         ),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
           textAlign: defaultTargetPlatformWidget == PlatformWidget.cupertino
               ? TextAlign.center
               : null,
         ),
       ),
-      Divider(),
+      const Divider(),
     ];
 
     body = (body is CupertinoDatePicker) || (body is Row)
-        ? Container(height: _kPickerSheetHeight, child: body)
+        ? SizedBox(height: _kPickerSheetHeight, child: body)
         : body;
     children.add(body);
     if (dismiss != null) {
       children.addAll([
-        Divider(height: 0),
+        const Divider(height: 0),
         dismiss,
       ]);
     } else {
-      children.add(SizedBox(height: 8));
+      children.add(const SizedBox(height: 8));
     }
 
     final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;

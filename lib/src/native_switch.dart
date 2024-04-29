@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'native_base.dart';
 
 class NativeSwitch extends BaseNativeStatelessWidget<CupertinoSwitch, Switch> {
-  NativeSwitch({
+  const NativeSwitch({
     Key? key,
     required this.value,
     required this.onChanged,

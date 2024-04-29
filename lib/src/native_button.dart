@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'native_base.dart';
 
-class NativeButton
-    extends BaseNativeStatelessWidget<CupertinoButton, MaterialButton> {
-  NativeButton({
+class NativeButton extends BaseNativeStatelessWidget<CupertinoButton, Widget> {
+  const NativeButton({
     Key? key,
     required this.child,
     required this.onPressed,
@@ -100,60 +98,63 @@ class NativeButton
   }
 
   @override
-  MaterialButton buildMaterial(BuildContext context) {
+  Widget buildMaterial(BuildContext context) {
     return filled == true
-        // ignore: deprecated_member_use
-        ? RaisedButton(
+        ? ElevatedButton(
             key: key,
             child: child,
             onPressed: onPressed,
             onLongPress: onLongPress,
-            onHighlightChanged: onHighlightChanged,
-            textTheme: textTheme,
-            textColor: textColor,
-            disabledTextColor: disabledTextColor,
-            color: color,
-            disabledColor: disabledColor,
-            focusColor: focusColor,
-            hoverColor: hoverColor,
-            highlightColor: highlightColor,
-            splashColor: splashColor,
-            colorBrightness: colorBrightness,
-            elevation: elevation,
-            focusElevation: focusElevation,
-            hoverElevation: hoverElevation,
-            highlightElevation: highlightElevation,
-            disabledElevation: disabledElevation,
-            padding: padding,
-            shape: shape,
             clipBehavior: clipBehavior ?? Clip.none,
             focusNode: focusNode,
             autofocus: autoFocus ?? false,
-            materialTapTargetSize: materialTapTargetSize,
-            animationDuration: animationDuration,
+            style: ElevatedButton.styleFrom(
+              tapTargetSize: materialTapTargetSize,
+              animationDuration: animationDuration,
+              elevation: elevation,
+              padding: padding,
+              // onHighlightChanged: onHighlightChanged,
+              // textTheme: textTheme,
+              // textColor: textColor,
+              // disabledTextColor: disabledTextColor,
+              // color: color,
+              // disabledColor: disabledColor,
+              // focusColor: focusColor,
+              // hoverColor: hoverColor,
+              // highlightColor: highlightColor,
+              // splashColor: splashColor,
+              // colorBrightness: colorBrightness,
+              // focusElevation: focusElevation,
+              // hoverElevation: hoverElevation,
+              // highlightElevation: highlightElevation,
+              // disabledElevation: disabledElevation,
+              // shape: shape,
+            ),
           )
         // ignore: deprecated_member_use
-        : FlatButton(
+        : TextButton(
             key: key,
             onPressed: onPressed,
             onLongPress: onLongPress,
-            onHighlightChanged: onHighlightChanged,
-            textTheme: textTheme,
-            textColor: textColor,
-            disabledTextColor: disabledTextColor,
-            color: color,
-            disabledColor: disabledColor,
-            focusColor: focusColor,
-            hoverColor: hoverColor,
-            highlightColor: highlightColor,
-            splashColor: splashColor,
-            colorBrightness: colorBrightness,
-            padding: padding,
-            shape: shape,
             clipBehavior: clipBehavior ?? Clip.none,
             focusNode: focusNode,
             autofocus: autoFocus ?? false,
-            materialTapTargetSize: materialTapTargetSize,
+            style: TextButton.styleFrom(
+              padding: padding,
+              tapTargetSize: materialTapTargetSize,
+              // onHighlightChanged: onHighlightChanged,
+              // textTheme: textTheme,
+              // textColor: textColor,
+              // disabledTextColor: disabledTextColor,
+              // color: color,
+              // disabledColor: disabledColor,
+              // focusColor: focusColor,
+              // hoverColor: hoverColor,
+              // highlightColor: highlightColor,
+              // splashColor: splashColor,
+              // colorBrightness: colorBrightness,
+              // shape: shape,
+            ),
             child: child,
           );
   }

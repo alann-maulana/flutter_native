@@ -5,7 +5,6 @@ import 'package:flutter/material.dart' as material;
 import 'package:flutter/widgets.dart';
 
 import '../flutter_native.dart';
-import 'native_base.dart';
 
 class NativeDialog {
   static Future<T?> showDialog<T>({
@@ -46,7 +45,7 @@ class NativeDialogAction extends BaseNativeStatelessWidget<
   final bool isDefaultAction;
   final bool isDestructiveAction;
 
-  NativeDialogAction({
+  const NativeDialogAction({super.key, 
     required this.child,
     required this.onPressed,
     this.leading,

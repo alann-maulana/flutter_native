@@ -12,14 +12,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return NativeApp(
       title: 'Flutter Demo',
-      materialTheme: NativeTheme.of(context).theme,
-      cupertinoTheme: NativeTheme.of(context).cupertinoTheme,
+      materialTheme: NativeTheme.of(context)?.theme,
+      cupertinoTheme: NativeTheme.of(context)?.cupertinoTheme,
       routes: <String, WidgetBuilder>{
         MyHomePage.route: (_) => const MyHomePage(title: 'Flutter Native Demo'),
         ListViewPage.route: (_) => const ListViewPage(),

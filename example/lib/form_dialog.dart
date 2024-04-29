@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
 class FormDialog extends StatefulWidget {
-  const FormDialog({Key key}) : super(key: key);
+  const FormDialog({Key? key}) : super(key: key);
 
   @override
   FormDialogState createState() {

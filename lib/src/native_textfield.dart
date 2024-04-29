@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 import 'native_base.dart';
 

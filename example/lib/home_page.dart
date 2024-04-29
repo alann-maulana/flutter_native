@@ -1,14 +1,13 @@
 import 'package:example/list_view_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_native/flutter_native.dart';
 
 import 'setting_page.dart';
 
 class MyHomePage extends StatefulWidget {
   static const route = '/';
-  const MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 

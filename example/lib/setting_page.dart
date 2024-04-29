@@ -6,18 +6,18 @@ import 'package:flutter_native/flutter_native.dart';
 import 'native_theme.dart';
 
 class SettingPage extends StatefulWidget {
-  const SettingPage({Key key}) : super(key: key);
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   _SettingPageState createState() => _SettingPageState();
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool darkMode;
+  bool? darkMode;
 
   @override
   Widget build(BuildContext context) {
-    darkMode ??= NativeTheme.of(context).theme.brightness == Brightness.dark;
+    darkMode ??= NativeTheme.of(context)?.theme.brightness == Brightness.dark;
     return NativeScaffold(
       appBar: NativeAppBar(
         title: const Text('Native Setting'),
@@ -29,28 +29,28 @@ class _SettingPageState extends State<SettingPage> {
           NativeListTile(
             title: const Text('Dark Mode'),
             trailing: NativeSwitch(
-              value: darkMode,
+              value: darkMode!,
               onChanged: (darkMode) {
                 setState(() {
                   this.darkMode = darkMode;
                 });
 
                 if (darkMode) {
-                  NativeTheme.of(context).changeTheme(Brightness.dark);
+                  NativeTheme.of(context)?.changeTheme(Brightness.dark);
                 } else {
-                  NativeTheme.of(context).changeTheme(Brightness.light);
+                  NativeTheme.of(context)?.changeTheme(Brightness.light);
                 }
               },
             ),
             onTap: () {
               setState(() {
-                darkMode = !darkMode;
+                darkMode = !darkMode!;
               });
 
-              if (darkMode) {
-                NativeTheme.of(context).changeTheme(Brightness.dark);
+              if (darkMode!) {
+                NativeTheme.of(context)?.changeTheme(Brightness.dark);
               } else {
-                NativeTheme.of(context).changeTheme(Brightness.light);
+                NativeTheme.of(context)?.changeTheme(Brightness.light);
               }
             },
           ),

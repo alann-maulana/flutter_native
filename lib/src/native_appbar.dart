@@ -15,7 +15,7 @@ class NativeAppBar
   final String iosPreviousPageTitle;
   final EdgeInsetsDirectional? padding;
 
-  NativeAppBar({
+  NativeAppBar({super.key, 
     required this.title,
     this.leading,
     this.iosTrailing,
@@ -23,7 +23,7 @@ class NativeAppBar
     this.androidActions,
     this.iosPreviousPageTitle = 'Back',
     this.padding,
-  })  : preferredSize = Size.fromHeight(56.0),
+  })  : preferredSize = const Size.fromHeight(56.0),
         cupertinoNavigationBar = iosLargeTitle == true
             ? null
             : cupertino.CupertinoNavigationBar(
