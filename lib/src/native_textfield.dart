@@ -37,7 +37,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
     this.onEditingComplete,
     this.onSubmitted,
     this.inputFormatters,
-    this.enabled,
+    this.enabled = true,
     this.cursorWidth = 2.0,
     this.cursorRadius,
     this.cursorColor,
@@ -87,7 +87,7 @@ class NativeTextField extends BaseNativeStatelessWidget<
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
-  final bool? enabled;
+  final bool enabled;
   final double cursorWidth;
   final Radius? cursorRadius;
   final Color? cursorColor;
